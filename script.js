@@ -43,3 +43,27 @@ function order() {
     closeOrder.classList.remove("close-order-on");
   }
 }
+function price() {
+  const selectedSobremesaPrice = Number(
+    document
+      .querySelector(".sobremesa-selected > h5")
+      .innerHTML.replace("R$ ", "")
+      .replace(",", ".")
+  );
+  const selectedBebidaPrice = Number(
+    document
+      .querySelector(".bebida-selected > h5")
+      .innerHTML.replace("R$ ", "")
+      .replace(",", ".")
+  );
+  const selectedPratoPrice = Number(
+    document
+      .querySelector(".prato-selected > h5")
+      .innerHTML.replace("R$ ", "")
+      .replace(",", ".")
+  );
+  const price =
+    selectedSobremesaPrice + selectedBebidaPrice + selectedPratoPrice;
+  const priceFinal = price.toFixed(2);
+  alert(priceFinal);
+}
