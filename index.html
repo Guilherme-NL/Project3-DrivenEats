@@ -114,9 +114,36 @@
       </div>
     </div>
     <div class="botton-bar close-order">
-      <button class="close-order-off" onclick="price()">
+      <button class="close-order-off" onclick="closeOrder()">
         Selecione os 3 itens para fechar o pedido
       </button>
+    </div>
+    <div class="order none">
+      <div class="order-confirmation">
+        <div>
+          <h2>Confirme seu pedido</h2>
+          <div class="selected-order">
+            <div class="prato">
+              <h3></h3>
+              <h5>Preço</h5>
+            </div>
+            <div class="bebida">
+              <h3></h3>
+              <h5>Preço</h5>
+            </div>
+            <div class="sobremesa">
+              <h3></h3>
+              <h5>Preço</h5>
+            </div>
+            <div class="total">
+              <h3>TOTAL</h3>
+              <h5>Preço</h5>
+            </div>
+          </div>
+          <button class="send-order">Tudo certo, pode pedir!</button>
+          <button class="cancel-order" onclick="orderCancel()">Cancelar</button>
+        </div>
+      </div>
     </div>
     <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
     <script src="script.js"></script>
