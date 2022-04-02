@@ -1,3 +1,9 @@
+//Global
+let nomeBebida = "";
+let nomePrato = "";
+let nomeSobremesa = "";
+let priceFinal = "";
+
 function selectPrato(element) {
   const selectedPrato = document.querySelector(".prato-selected");
   if (selectedPrato !== null) {
@@ -43,30 +49,6 @@ function order() {
     closeOrder.classList.remove("close-order-on");
   }
 }
-function price() {
-  const selectedSobremesaPrice = Number(
-    document
-      .querySelector(".sobremesa-selected > h5")
-      .innerHTML.replace("R$ ", "")
-      .replace(",", ".")
-  );
-  const selectedBebidaPrice = Number(
-    document
-      .querySelector(".bebida-selected > h5")
-      .innerHTML.replace("R$ ", "")
-      .replace(",", ".")
-  );
-  const selectedPratoPrice = Number(
-    document
-      .querySelector(".prato-selected > h5")
-      .innerHTML.replace("R$ ", "")
-      .replace(",", ".")
-  );
-  const price =
-    selectedSobremesaPrice + selectedBebidaPrice + selectedPratoPrice;
-  const priceFinal = price.toFixed(2);
-  console.log(priceFinal);
-}
 function closeOrder() {
   const closeOrderOn = document.querySelector(".close-order-on");
   if (closeOrderOn !== null) {
@@ -74,15 +56,13 @@ function closeOrder() {
   }
   //order name on confirmation screen
   //prato selected name
-  const nomePrato = document.querySelector(".prato-selected > h3").innerHTML;
+  nomePrato = document.querySelector(".prato-selected > h3").innerHTML;
   document.querySelector(".prato > h3").innerHTML = `${nomePrato}`;
   //bebida selected name
-  const nomeBebida = document.querySelector(".bebida-selected > h3").innerHTML;
+  nomeBebida = document.querySelector(".bebida-selected > h3").innerHTML;
   document.querySelector(".bebida > h3").innerHTML = `${nomeBebida}`;
   //sobremesa selected name
-  const nomeSobremesa = document.querySelector(
-    ".sobremesa-selected > h3"
-  ).innerHTML;
+  nomeSobremesa = document.querySelector(".sobremesa-selected > h3").innerHTML;
   document.querySelector(".sobremesa > h3").innerHTML = `${nomeSobremesa}`;
   //order price on confirmation screen
   //prato selected price
@@ -115,10 +95,18 @@ function closeOrder() {
   );
   const price =
     selectedSobremesaPrice + selectedBebidaPrice + selectedPratoPrice;
-  const priceFinal = price.toFixed(2).replace(".", ",");
+  priceFinal = price.toFixed(2).replace(".", ",");
   //define
   document.querySelector(".total > h5").innerHTML = `R$ ${priceFinal}`;
 }
 function orderCancel() {
   document.querySelector(".order").classList.add("none");
+}
+function orderSend() {
+  let number = "5513981732399";
+  let msg = `Olá, gostaria de fazer o pedido:\n- Prato: ${nomePrato}\n- Bebida: ${nomeBebida}\n- Sobremesa: ${nomeSobremesa}\nTotal: R$ ${priceFinal}`;
+  let target = `https://wa.me/${encodeURIComponent(
+    number
+  )}?text=${encodeURIComponent(msg)}`;
+  document.querySelector("a").href = target;
 }
